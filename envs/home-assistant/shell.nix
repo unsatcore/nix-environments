@@ -13,18 +13,18 @@ pkgs.mkShell {
     doxygen
     graphviz
     isa-l
-    zlib-ng
+    zlib
   ];
   # fix homeassistant-pyozw build
   NIX_CFLAGS_COMPILE = [ "-Wno-error=format-security" ];
   LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [ stdenv.cc.cc libjpeg ];
   buildInputs = with pkgs; [
+    cacert
     libxml2
     openssl
     libxslt
     libffi
     udev
-    zlib
     ffmpeg
   ] ++ extraPkgs;
 }
